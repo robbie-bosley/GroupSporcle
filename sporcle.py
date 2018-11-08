@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os, random
 import sys
 
@@ -46,14 +47,18 @@ with open('sporcle.sh', 'w') as fout:
     fout.write("echo "+str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg+" >> sporcle.txt\n")
     fout.write("echo Score stored to sporcle.txt")
 
+	
 #os.system("chmod 755 sporcle.sh")
 if sys.version_info[0] < 3:
 	submit = raw_input("Are the details above correct?[y/n]\n")
 else:
 	submit = input("Are the details above correct?[y/n]\n")
-		
 if (submit == "y"):
-    os.system("./sporcle.sh")
+	if ("win" in sys.platform):
+		with open('sporcle.txt', 'a+') as fout:
+			fout.write(str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg)
+	else:	
+		os.system("./sporcle.sh")
 else:
     print ("You can store the score still by sourcing sporcle.sh")
 
