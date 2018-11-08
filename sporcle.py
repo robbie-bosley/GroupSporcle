@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os, random
 import sys
 
@@ -55,7 +56,7 @@ else:
 if (submit == "y"):
 	if ("win" in sys.platform):
 		with open('sporcle.txt', 'a+') as fout:
-			fout.write(str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg+")
+			fout.write(str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg)
 	else:	
 		os.system("./sporcle.sh")
 else:
