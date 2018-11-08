@@ -1,0 +1,2 @@
+# GroupSporcle
+Group Sporcle
