@@ -1,3 +1,3 @@
 #!/bin/bash
-echo 1.0 1.0 100.0 1 99.0 1 1 1 1 >> sporcle.txt
+echo 19.0 20.0 95.0 70 25.0 Just_for_fun 114 3 n >> sporcle.txt
 echo Score stored to sporcle.txt
