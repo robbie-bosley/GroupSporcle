@@ -1,6 +1,7 @@
 from __future__ import print_function
 import os, random
-import sys
+import sys, socket
+import writeData
 
 print ("You are entering a score from a sporcle quiz!")
 inpscore = input("What was your raw score?\n")
@@ -42,22 +43,21 @@ else:
     choice = random.randint(0, len(averagelist)-1)
     print (averagelist[choice])
     
-with open('sporcle.sh', 'w') as fout:
-    fout.write("#!/bin/bash\n")
-    fout.write("echo "+str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg+" >> sporcle.txt\n")
-    fout.write("echo Score stored to sporcle.txt")
-
-	
 #os.system("chmod 755 sporcle.sh")
 if sys.version_info[0] < 3:
 	submit = raw_input("Are the details above correct?[y/n]\n")
 else:
 	submit = input("Are the details above correct?[y/n]\n")
 if (submit == "y"):
-	if ("win" in sys.platform):
-		with open('sporcle.txt', 'a+') as fout:
-			fout.write(str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg)
+	if ("ph.bham.ac.uk" not in socket.gethostname()):
+		data=str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg
+		print ("You appear to be a remote user, copying data to eprexa")
+		writeData.put_file('eprexa.ph.bham.ac.uk','/home/rb/Documents/GroupSporcle', 'sporcle.txt', data)
 	else:	
+		with open('sporcle.sh', 'w') as fout:
+			fout.write("#!/bin/bash\n")
+			fout.write("echo "+str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg+" >> sporcle.txt\n")
+			fout.write("echo Score stored to sporcle.txt")
 		os.system("./sporcle.sh")
 else:
     print ("You can store the score still by sourcing sporcle.sh")
