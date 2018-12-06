@@ -1,7 +1,7 @@
 from __future__ import print_function
 import os, random
 import sys, socket
-import writeData
+#import writeData
 
 print ("You are entering a score from a sporcle quiz!")
 inpscore = input("What was your raw score?\n")
@@ -27,7 +27,7 @@ else:
 print ("Ok, so on day", day, ",", players, "of you played a", category, "quiz, and you got", score, "/", maximum, "=", percentage, "% while the average was", average, "%? And winnipeg is a ", winnipeg, "?")
 
 goodlist = ["That right there was the work of a superior intellect.", "Most people would not have been that smart. You are not most people.", "I bet you fill out crossword puzzles in pen.", "We bet your mum always liked you the best too.", "Someone's firing on all cylinders!", "Is this the greatest moment of your life?", "What's it like to be perfect?", "Now you're getting the hang of it!", "Great job! Next time, win CASH when you do this well ... on FleetWit!", "9/10 dentists agree: You are the BEST. Now go win some cash on FleetWit!", "We're so proud of you.", "Want to win cash for knowing stuff? Play trivia on FleetWit!", "'All things excellent are as difficult as they are rare.' -Baruch Spinoza"]
-averagelist = ["You get an A for ... Average.", "Of all the scores you could possibly have achieved, that was certainly one of them.", "A perfectly cromulent score.", "Close, but no cigar! Smoking is bad for your health anyway.", "I see what you did there. If you can't beat 'em, join 'em!", "Right smack dab at average. Well played.", "How nice of you not to ruin the curve for everyone else."]
+averagelist = ["You get an A for ... Average.", "Of all the scores you could possibly have achieved, that was certainly one of them.", "A perfectly cromulent score.", "Close, but no cigar! Smoking is bad for your health anyway.", "I see what you did there. If you can't beat 'em, join 'em!", "Right smack dab at average. Well played.", "How nice of you not to ruin the curve for everyone else.", "You're in the sweet spot between really awesome and totally not awesome."]
 badlist = ["You have died of dysentery.", "Maybe this will build character.", "Not your best effort, but keep trying!", "OK, now that you are all warmed up, let's do this for real!", "There's nothing like a good score, and that was nothing like a good score.", "Oof. This is not your area of expertise.", "Good first effort! Try again and you'll nail this bad boy!", "Just so you know, these comments get funnier the better you do.", "I just want you to feel you're doing well."]
 
 print (len(goodlist))
@@ -52,7 +52,7 @@ if (submit == "y"):
 	if ("ph.bham.ac.uk" not in socket.gethostname()):
 		data=str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg
 		print ("You appear to be a remote user, copying data to eprexa")
-		writeData.put_file('eprexa.ph.bham.ac.uk','/home/rb/Documents/GroupSporcle', 'sporcle.txt', data)
+		#writeData.put_file('eprexa.ph.bham.ac.uk','/home/rb/Documents/GroupSporcle', 'sporcle.txt', data)
 	else:	
 		with open('sporcle.sh', 'w') as fout:
 			fout.write("#!/bin/bash\n")
