@@ -1,3 +1,3 @@
 #!/bin/bash
-echo 12.0 15.0 80.0 75 5.0 Language 135 2 n >> sporcle.txt
+echo 49.0 81.0 60.4938271605 56 4.49382716049 Movies 140 2 n >> sporcle.txt
 echo Score stored to sporcle.txt
