@@ -1,3 +1,3 @@
 #!/bin/bash
-echo 13.0 20.0 65.0 66 -1.0 Movies 146 3 n >> sporcle.txt
+echo 15.0 21.0 71.4285714286 78 -6.57142857143 Geography 167 4 n >> sporcle.txt
 echo Score stored to sporcle.txt
