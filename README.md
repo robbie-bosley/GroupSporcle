@@ -17,7 +17,7 @@ or
 ./sporcle.sh
 
 For the moment, this process does not use TTrees, so simply use:
-python makeroot.py
+3) python makeroot.py
 
 4) examine the graphs at your leisure:
 root -l SporcleAnalysis.root
