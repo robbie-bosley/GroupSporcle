@@ -6,7 +6,7 @@ from ROOT import TGraph, TH1F, TFile, TCanvas, TPaveText, TTree, TBranch, TStrin
 
 filename = "sporcle.txt"
 
-inpscore, inpmaximum, inppercentage, inpaverage, inpdifference, category, inpday, inpplayers, winnipeg = np.loadtxt(filename, dtype = 'string', unpack=True)
+inpscore, inpmaximum, inppercentage, inpaverage, inpdifference, inpcategory, inpday, inpplayers, winnipeg = np.loadtxt(filename, dtype = 'string', unpack=True)
 
 #nentries = len(inpscore)
 
@@ -18,6 +18,7 @@ difference = []
 day = []
 players = []
 fracdifference = []
+category = []
 
 #TTree
 #tSporcleData = TTree("SporcleData", "Tree containing Sporcle information");
@@ -26,6 +27,9 @@ fracdifference = []
 #score
 #tSporcleData.Branch('score', score, 'score/F')
 #maximum
+for i in inpcategory:
+    category.append(i)
+print category
 
 for i in inpscore:
     score.append(float(i))
@@ -61,10 +65,10 @@ for i in range (0, max(day)+1):
         mean_list = np.mean(fracdiffday)
         fracdiff_avg.append(mean_list)
         
-print(len(fracdiff_avg))
-print(fracdiff_avg)
-print(len(day_for_avg))
-print(day_for_avg)
+#print(len(fracdiff_avg))
+#print(fracdiff_avg)
+#print(len(day_for_avg))
+#print(day_for_avg)
     
 h_difference = TH1F("difference", "Difference between recorded percentage score and average percentage", 50, -101, 101)
 for i in difference:

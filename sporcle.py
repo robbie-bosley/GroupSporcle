@@ -100,16 +100,16 @@ if sys.version_info[0] < 3:
 	submit = raw_input("Are the details above correct?[y/n]\n")
 else:
 	submit = input("Are the details above correct?[y/n]\n")
+with open('sporcle.sh', 'w') as fout:
+	fout.write("#!/bin/bash\n")
+	fout.write("echo "+str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg+" >> sporcle.txt\n")
+	fout.write("echo Score stored to sporcle.txt")
 if (submit == "y"):
 	if ("ph.bham.ac.uk" not in socket.gethostname()):
 		data=str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg
 		print ("You appear to be a remote user, copying data to eprexa")
 		#writeData.put_file('eprexa.ph.bham.ac.uk','/home/rb/Documents/GroupSporcle', 'sporcle.txt', data)
 	else:	
-		with open('sporcle.sh', 'w') as fout:
-			fout.write("#!/bin/bash\n")
-			fout.write("echo "+str(score)+" "+str(maximum)+" "+str(percentage)+" "+str(average)+" "+str(difference)+" "+category+" "+day+" "+players+" "+winnipeg+" >> sporcle.txt\n")
-			fout.write("echo Score stored to sporcle.txt")
 		os.system("./sporcle.sh")
 else:
     print ("You can store the score still by sourcing sporcle.sh")
