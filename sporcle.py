@@ -1,6 +1,7 @@
 from __future__ import print_function
 import os, random
 import sys, socket
+import datetime
 #import writeData
                                                                                                     
                                                                                                     
@@ -54,6 +55,18 @@ print("""                                            ``````````````
                                                                                                     
 """)
 
+dayofyear = datetime.datetime.now().timetuple().tm_yday
+year =  datetime.datetime.now().timetuple().tm_year
+yearafter = year - 2019
+if (year%4 == 0):
+    leap = 1
+else:
+    leap = 0
+yearmod = 160 + (yearafter * 365) + leap
+truedate = dayofyear+yearmod
+#print (dayofyear + yearmod)
+
+
 
 print ("You are entering a score from a sporcle quiz!")
 inpscore = input("What was your raw score?\n")
@@ -68,12 +81,12 @@ difference = percentage - average
 if sys.version_info[0] < 3:
 	category = raw_input("What was the category?\n")
 	players = raw_input("How many of you played the quiz?\n")
-	day = raw_input("What day is it (number form, where day 79 is 11/10/2018)\n")
+	day = str(truedate)
 	winnipeg = raw_input("Winnipeg? [y/n]\n")
 else:
 	category = input("What was the category?\n")
 	players = input("How many of you played the quiz?\n")
-	day = input("What day is it (number form, where day 79 is 11/10/2018)\n")
+	day = str(truedate)
 	winnipeg = input("Winnipeg? [y/n]\n")
 
 print ("Ok, so on day", day, ",", players, "of you played a", category, "quiz, and you got", score, "/", maximum, "=", percentage, "% while the average was", average, "%? And winnipeg is a ", winnipeg, "?")
